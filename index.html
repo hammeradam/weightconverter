@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <style>
+        body {
+            margin-top: 70px;
+            background: #333;
+            color: white;
+        }
+    </style>
+    <title>Weight Converter</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="display-4 text-center mb-5">Weight Converter</h1>
+        <div class="row">
+            <!--Lb convert -->
+            <div class="col-md-4 col-sm-12">
+                <form>
+                    <div class="form-group">
+                        <input id="lb-input" type="number" class="form-control form-control-lg" placeholder="Enter Pounds...">
+                    </div>
+                </form>
+                <div id="lb-output">
+                    <div class="card card-primary mb-2">
+                        <div class="card-block">
+                            <h4>Grams:</h4>
+                            <div id="lb-gOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary mb-2">
+                        <div class="card-block">
+                            <h4>Kilograms:</h4>
+                            <div id="lb-kgOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-primary mb-3">
+                        <div class="card-block">
+                            <h4>Ounces:</h4>
+                            <div id="lb-ozOutput"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Kg convert -->
+            <div class="col-md-4 col-sm-12">
+                <form>
+                    <div class="form-group">
+                        <input id="kg-input" type="number" class="form-control form-control-lg" placeholder="Enter Kilograms...">
+                    </div>
+                </form>
+                <div id="kg-output">
+                    <div class="card card-success mb-2">
+                        <div class="card-block">
+                            <h4>Grams:</h4>
+                            <div id="kg-gOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-success mb-2">
+                        <div class="card-block">
+                            <h4>Pounds:</h4>
+                            <div id="kg-lbOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-success mb-3">
+                        <div class="card-block">
+                            <h4>Ounces:</h4>
+                            <div id="kg-ozOutput"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Oz convert -->
+            <div class="col-md-4 col-sm-12">
+                <form>
+                    <div class="form-group">
+                        <input id="oz-input" type="number" class="form-control form-control-lg" placeholder="Enter Ounces...">
+                    </div>
+                </form>
+                <div id="oz-output">
+                    <div class="card card-danger mb-2">
+                        <div class="card-block">
+                            <h4>Grams:</h4>
+                            <div id="oz-gOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-danger mb-2">
+                        <div class="card-block">
+                            <h4>Pounds:</h4>
+                            <div id="oz-lbOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-danger mb-3">
+                        <div class="card-block">
+                            <h4>Kilograms:</h4>
+                            <div id="oz-kgOutput"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+
+    <script>
+        document.getElementById('lb-output').style.display = 'none';
+        document.getElementById('lb-input').addEventListener('input', (e) => {
+            let lbs = e.target.value;
+            if (lbs !== '0') {
+                document.getElementById('lb-output').style.display = 'block';
+                document.getElementById('lb-gOutput').innerHTML = lbs / 0.0022046;
+                document.getElementById('lb-kgOutput').innerHTML = lbs / 2.2046;
+                document.getElementById('lb-ozOutput').innerHTML = lbs * 16;
+            }
+            else {
+                document.getElementById('lb-output').style.display = 'none';
+            }
+        })
+
+        document.getElementById('kg-output').style.display = 'none';
+        document.getElementById('kg-input').addEventListener('input', (e) => {
+            let kgs = e.target.value;
+            if (kgs !== '0') {
+                document.getElementById('kg-output').style.display = 'block';
+                document.getElementById('kg-gOutput').innerHTML = kgs * 1000;
+                document.getElementById('kg-lbOutput').innerHTML = kgs / 0.45359237;
+                document.getElementById('kg-ozOutput').innerHTML = kgs / 0.02834952;
+            }
+            else {
+                document.getElementById('kg-output').style.display = 'none';
+            }
+        })
+
+        document.getElementById('oz-output').style.display = 'none';
+        document.getElementById('oz-input').addEventListener('input', (e) => {
+            let ozs = e.target.value;
+            if (ozs !== '0') {
+                document.getElementById('oz-output').style.display = 'block';
+                document.getElementById('oz-gOutput').innerHTML = ozs * 28.34952;
+                document.getElementById('oz-lbOutput').innerHTML = ozs / 16;
+                document.getElementById('oz-kgOutput').innerHTML = ozs * 0.02834952;
+            }
+            else {
+                document.getElementById('oz-output').style.display = 'none';
+            }
+        })
+    </script>
+</body>
+
+</html>
